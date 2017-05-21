@@ -2,12 +2,10 @@ package org.ws13.howtos.vertx.asyncs;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.AsyncResult;
-import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import org.ws13.howtos.vertx.asyncs.services.HelloService;
+import org.ws13.howtos.vertx.asyncs.services.WhisperService;
 
 /**
  * @author ctranxuan
@@ -27,6 +25,21 @@ public class AsyncsVerticle extends AbstractVerticle {
             }
         }
     }
+
+    private static class SayEndHandler implements Handler<AsyncResult<Void>> {
+
+        @Override
+        public void handle(final AsyncResult<Void> aResult) {
+            if (aResult.succeeded()) {
+                System.out.printf("        That's the end, folks!\n");
+
+            } else {
+                System.err.println("That ended bad, folks! Sorry :(");
+
+            }
+        }
+    }
+
     @Override
     public void start() throws Exception {
         super.start();
@@ -35,12 +48,25 @@ public class AsyncsVerticle extends AbstractVerticle {
         HelloService helloService;
         helloService = new HelloService();
 
-        helloService.sayHello(new JsonObject().put("name", "Arthur Accroc"), new PrintHandler());
-        helloService.sayHelloWithFuture(new JsonObject().put("name", "Ford Escort"), new PrintHandler());
-        helloService.sayHelloWithFuture2(new JsonObject().put("name", "Trillian McMillan"), new PrintHandler());
-        helloService.sayHelloWithRx(new JsonObject().put("name", "Marvin the Bot"), new PrintHandler());
-        helloService.sayHelloWithRx2(new JsonObject().put("name", "Zappy Bibicy"), new PrintHandler());
-        helloService.sayHelloWithRx3(new JsonObject().put("name", "Vorlon"), new PrintHandler());
+        PrintHandler printHandler;
+        printHandler = new PrintHandler();
+
+        helloService.sayHello(new JsonObject().put("name", "Arthur Accroc"), printHandler);
+        helloService.sayHelloWithFuture(new JsonObject().put("name", "Ford Escort"), printHandler);
+        helloService.sayHelloWithFuture2(new JsonObject().put("name", "Trillian McMillan"), printHandler);
+        helloService.sayHelloWithRx(new JsonObject().put("name", "Marvin the Bot"), printHandler);
+        helloService.sayHelloWithRx2(new JsonObject().put("name", "Zappy Bibicy"), printHandler);
+        helloService.sayHelloWithRx3(new JsonObject().put("name", "Vorlon"), printHandler);
+
+        WhisperService whisperService;
+        whisperService = new WhisperService();
+
+        SayEndHandler sayEndHandler;
+        sayEndHandler = new SayEndHandler();
+
+        whisperService.whisper("Scotty", sayEndHandler);
+        whisperService.whisperWithFuture("Chekov", sayEndHandler);
+        whisperService.whisperWithRx("Sulu", sayEndHandler);
     }
 
     @Override
