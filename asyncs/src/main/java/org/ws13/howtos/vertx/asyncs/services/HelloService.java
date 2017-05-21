@@ -58,7 +58,7 @@ public class HelloService {
                 concatWithExclamation(v, exclamation.completer());
                 return exclamation;
 
-                })
+            })
             .compose(v -> {
                 concatWithISay(v, future.completer());
             }, future);
