@@ -1,0 +1,51 @@
+= Discoveries
+
+This is a simple sample that illustrates how to develop a custom service type
+for the http://vertx.io/docs/vertx-service-discovery/java/[Vert.x Service Discovery]:
+
+* link:discoveries-service-type[discoveries-service-type] declares a HelloType and start
+a verticle that registers the HelloService into the Vert.x Service Discovery
+* link:discoveries-consumer[discoveries-consumer] start a verticle that calls the
+Vert.x Service Discovery to get the HelloService and calls this one.
+
+==  Run the examples with maven
+
+[source,shell]
+----
+mvn clean install
+cd discoveries-service-type
+mvn clean vertx:run -Dvertx.runArgs="-cluster"
+----
+
+Open another terminal:
+
+[source,shell]
+----
+cd discoveries-consumer
+mvn clean vertx:run -Dvertx.runArgs="-cluster"
+----
+
+== Run the examples with an IDE
+
+=== discoveries-service-type
+
+Create a `Run` configuration for the project
+`discoveries-service-type` with
+the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- Program arguments: `run org.ws13.howtos.vertx.discoveries.hello.HelloPublisherVerticle -cluster`
+- Use of classpath module: `discoveries-service-type`
+
+=== discoveries-consumer
+
+Create a `Run` configuration for the project
+`discoveries-consumer` with
+the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- Program arguments: `run org.ws13.howtos.vertx.discoveries.hello.consumer.HelloConsumerVerticle -cluster`
+- Use of classpath module: `discoveries-consumer`
+
+
+
