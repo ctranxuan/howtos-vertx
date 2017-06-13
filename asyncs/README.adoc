@@ -1,0 +1,24 @@
+= Vert.x and the async calls chain
+
+This is a small sample project to illustrate the different way to
+perform asynchronous calls that chain with http://vertx.io/[Vert.x].
+
+This sample is part of a blog post  http://streamdata.io/blog/vert-x-and-the-async-calls-chain/[Vert.x and the async calls chain]
+
+==  Run the examples with maven
+
+[source,shell]
+----
+mvn clean install
+cd asyncs
+mvn clean vertx:run
+----
+
+== Run the examples with an IDE
+
+Create a `Run` configuration for the project
+`asyncs` with the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- Program arguments: `run org.ws13.howtos.vertx.asyncs.AsyncsVerticle`
+- Use of classpath module: `asyncs`

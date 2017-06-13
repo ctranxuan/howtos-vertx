@@ -8,7 +8,7 @@ a verticle that registers the HelloService into the Vert.x Service Discovery
 * link:discoveries-consumer[discoveries-consumer] start a verticle that calls the
 Vert.x Service Discovery to get the HelloService and calls this one.
 
-This sample is part of a blog post  http://streamdata.io/blog/implementing-a-custom-service-type-for-the-vertx-service-discovery/[Implementing a custom Service Type for the Vert.x Service Discovery]
+This sample is part of a blog post http://streamdata.io/blog/implementing-a-custom-service-type-for-the-vertx-service-discovery/[Implementing a custom Service Type for the Vert.x Service Discovery]
 
 ==  Run the examples with maven
 
