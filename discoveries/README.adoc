@@ -8,13 +8,15 @@ a verticle that registers the HelloService into the Vert.x Service Discovery
 * link:discoveries-consumer[discoveries-consumer] start a verticle that calls the
 Vert.x Service Discovery to get the HelloService and calls this one.
 
+This sample is part of a blog post  http://streamdata.io/blog/implementing-a-custom-service-type-for-the-vertx-service-discovery/[Implementing a custom Service Type for the Vert.x Service Discovery]
+
 ==  Run the examples with maven
 
 [source,shell]
 ----
 mvn clean install
 cd discoveries-service-type
-mvn clean vertx:run -Dvertx.runArgs="-cluster"
+mvn clean vertx:run -Dvertx.runArgs="-cluster" -Dvertx.jvmArguments="-Djava.util.logging.config.file=logging.properties"
 ----
 
 Open another terminal:
@@ -22,7 +24,7 @@ Open another terminal:
 [source,shell]
 ----
 cd discoveries-consumer
-mvn clean vertx:run -Dvertx.runArgs="-cluster"
+mvn clean vertx:run -Dvertx.runArgs="-cluster" -Dvertx.jvmArguments="-Djava.util.logging.config.file=logging.properties"
 ----
 
 == Run the examples with an IDE
@@ -34,8 +36,11 @@ Create a `Run` configuration for the project
 the following configuration:
 
 - Main class: `io.vertx.core.Launcher`
+- VM options: `-Djava.util.logging.config.file=src/main/resources/logging.properties`
 - Program arguments: `run org.ws13.howtos.vertx.discoveries.hello.HelloPublisherVerticle -cluster`
 - Use of classpath module: `discoveries-service-type`
+
+The VM option switch off the verbosity of the Cluster library Ignite
 
 === discoveries-consumer
 
@@ -44,8 +49,13 @@ Create a `Run` configuration for the project
 the following configuration:
 
 - Main class: `io.vertx.core.Launcher`
+- VM options: `-Djava.util.logging.config.file=src/main/resources/logging.properties`
 - Program arguments: `run org.ws13.howtos.vertx.discoveries.hello.consumer.HelloConsumerVerticle -cluster`
 - Use of classpath module: `discoveries-consumer`
 
+The VM option switch off the verbosity of the Cluster library Ignite
+
+Run the `discoveries-service-type` first since the `HelloService` is
+used by `discoveries-consumer` at startup.
 
 

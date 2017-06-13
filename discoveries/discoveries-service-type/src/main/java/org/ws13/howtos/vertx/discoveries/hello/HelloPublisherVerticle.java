@@ -36,17 +36,20 @@ public class HelloPublisherVerticle extends AbstractVerticle {
 
     @Override
     public void stop() throws Exception {
-        super.stop();
-        discovery.unpublish(helloServiceRecord.getRegistration(),
-                            ar -> {
-                                if (ar.succeeded()) {
-                                    System.out.println("Hello Service successfully unpublished!");
+        if (helloServiceRecord != null) {
+            discovery.unpublish(helloServiceRecord.getRegistration(),
+                                ar -> {
+                                    if (ar.succeeded()) {
+                                        System.out.println("Hello Service successfully unpublished!");
 
-                                } else {
-                                    System.err.println("Hum, there was something wrong with the unpublication of the Hello Service... ಠ_ಠ");
-                                }
-                            });
+                                    } else {
+                                        System.err.println("Hum, there was something wrong with the unpublication of the Hello Service... ಠ_ಠ");
+                                    }
+                                });
+        }
+
         discovery.close();
         System.out.println("HelloPublisherVerticle.stop");
+        super.stop();
     }
 }

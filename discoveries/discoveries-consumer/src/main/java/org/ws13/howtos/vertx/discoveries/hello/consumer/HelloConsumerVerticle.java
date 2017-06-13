@@ -6,9 +6,6 @@ import io.vertx.servicediscovery.ServiceDiscovery;
 import io.vertx.servicediscovery.ServiceReference;
 import org.ws13.howtos.vertx.discoveries.hello.HelloService;
 import org.ws13.howtos.vertx.discoveries.hello.HelloType;
-import org.ws13.howtos.vertx.discoveries.hello.HelloTypeImpl;
-
-import static org.ws13.howtos.vertx.discoveries.hello.HelloType.TYPE;
 
 /**
  * @author ctranxuan
