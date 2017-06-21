@@ -31,7 +31,7 @@ public class HelloReference extends AbstractServiceReference<HelloService> {
     }
 
     @Override
-    protected void close() {
+    public void close() {
         // add your code here, if ever your service object needs cleanup
         super.close();
     }
