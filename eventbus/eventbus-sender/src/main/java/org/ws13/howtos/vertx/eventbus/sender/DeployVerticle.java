@@ -12,10 +12,11 @@ public class DeployVerticle extends AbstractVerticle {
         System.out.println("DeployVerticle.start");
         super.start();
 
-//        vertx.deployVerticle(RetryWithHandlerVerticle.class.getName());
-//        vertx.deployVerticle(RetryWithRxJavaVerticle.class.getName());
+        vertx.deployVerticle(RetryWithHandlerVerticle.class.getName());
+        vertx.deployVerticle(RetryWithRxJavaVerticle.class.getName());
+        vertx.deployVerticle(RetryWithCircuitBreakerVerticle.class.getName());
 //        vertx.deployVerticle(PingVerticle.class.getName());
-        vertx.deployVerticle(RxPingVerticle.class.getName());
+//        vertx.deployVerticle(RxPingVerticle.class.getName());
     }
 
 

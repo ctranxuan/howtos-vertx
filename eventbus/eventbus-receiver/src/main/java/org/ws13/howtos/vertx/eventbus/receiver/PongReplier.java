@@ -1,7 +1,6 @@
 package org.ws13.howtos.vertx.eventbus.receiver;
 
 import java.util.Objects;
-import java.util.function.Function;
 
 /**
  * @author ctranxuan
