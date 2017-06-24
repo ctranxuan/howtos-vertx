@@ -23,7 +23,7 @@ public class RetryWithRxJavaVerticle extends AbstractVerticle {
                 .retry((count, error) -> {
                     System.out.printf("timeout scenario with rx: retry count %d, received error \"%s\"\n",
                                       count, error.getMessage());
-                    return count < 3 && error instanceof ReplyException;
+                    return count < 3;
                 })
                 .map(Message::body)
                 .subscribe(m -> System.out.printf("timeout scenario with rx: received \"%s\"\n", m),
@@ -34,7 +34,7 @@ public class RetryWithRxJavaVerticle extends AbstractVerticle {
                 .retry((count, error) -> {
                     System.out.printf("failure scenario with rx: retry count %d, received error \"%s\"\n",
                                       count, error.getMessage());
-                    return count < 3 && error instanceof ReplyException;
+                    return count < 3;
                 })
                 .map(Message::body)
                 .subscribe(m -> System.out.printf("failure scenario with rx: received \"%s\"\n", m),
