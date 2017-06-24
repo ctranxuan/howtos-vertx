@@ -56,6 +56,8 @@ public class PingVerticle extends AbstractVerticle {
     }
 
     private static class PingReplyHandler implements Handler<AsyncResult<Message<String>>> {
+        private final PingReplier replier = new PingReplier();
+
         @Override
         public void handle(final AsyncResult<Message<String>> aResult) {
             if (aResult.succeeded()) {
@@ -67,23 +69,7 @@ public class PingVerticle extends AbstractVerticle {
                 System.out.printf("[%s] received %s\n", PingVerticle.class.getName(), response);
 
                 String reply;
-                switch (response) {
-                    case "pong":
-                        reply = "pang";
-                        break;
-
-                    case "pung":
-                        reply = "peng";
-                        break;
-
-                    case "pyng":
-                        reply = "ping";
-                        break;
-
-                    default:
-                        reply = "the ball went out of the table";
-                        break;
-                }
+                reply = replier.reply(response);
 
                 message.reply(reply, this);
 

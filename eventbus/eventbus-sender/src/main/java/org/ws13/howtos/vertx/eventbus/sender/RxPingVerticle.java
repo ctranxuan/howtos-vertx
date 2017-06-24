@@ -36,6 +36,8 @@ public class RxPingVerticle extends AbstractVerticle {
     }
 
     private static class RxReplySubscriber implements Action1<Message<String>> {
+        private final PingReplier replier = new PingReplier();
+
         @Override
         public void call(final Message<String> aMessage) {
             String response;
@@ -43,23 +45,7 @@ public class RxPingVerticle extends AbstractVerticle {
 
             System.out.printf("[%s] received %s\n", RxPingVerticle.class.getName(), response);
             String reply;
-            switch (response) {
-                case "pong":
-                    reply = "pang";
-                    break;
-
-                case "pung":
-                    reply = "peng";
-                    break;
-
-                case "pyng":
-                    reply = "ping";
-                    break;
-
-                default:
-                    reply = "the ball went out of the table";
-                    break;
-            }
+            reply = replier.reply(response);
 
             aMessage.<String>rxReply(reply).subscribe(this);
         }
