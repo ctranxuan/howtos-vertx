@@ -1,7 +1,6 @@
 package org.ws13.howtos.vertx.eventbus.sender;
 
 import io.vertx.core.eventbus.DeliveryOptions;
-import io.vertx.core.eventbus.ReplyException;
 import io.vertx.rxjava.core.AbstractVerticle;
 import io.vertx.rxjava.core.eventbus.Message;
 
