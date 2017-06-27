@@ -19,7 +19,8 @@ public class RetryWithRxJavaVerticle extends AbstractVerticle {
 
         vertx.eventBus()
                 .<String>rxSend("hello.rx.timeout.retry", "Hello", deliveryOptions)
-                .retry((count, error) -> {
+//                .retry(2) // if you don't bother with dealing with the error
+                .retry((count, error) -> { // here, we do bother, just to print the count
                     System.out.printf("timeout scenario with rx: retry count %d, received error \"%s\"\n",
                                       count, error.getMessage());
                     return count < 3;
@@ -30,7 +31,8 @@ public class RetryWithRxJavaVerticle extends AbstractVerticle {
 
         vertx.eventBus()
                 .<String>rxSend("hello.rx.failure.retry", "Hello")
-                .retry((count, error) -> {
+//                .retry(2) // if you don't bother with dealing with the error
+                .retry((count, error) -> { // here, we do bother, just to print the count
                     System.out.printf("failure scenario with rx: retry count %d, received error \"%s\"\n",
                                       count, error.getMessage());
                     return count < 3;
