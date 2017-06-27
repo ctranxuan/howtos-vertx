@@ -29,15 +29,15 @@ public class DeployVerticle extends AbstractVerticle {
 
         vertx.deployVerticle(TimeoutReplierVerticle.class.getName(), new DeploymentOptions().setConfig(rxConfig));
 
-        vertx.deployVerticle(ReplierWithFailure.class.getName(),
+        vertx.deployVerticle(ReplierWithFailureVerticle.class.getName(),
                              new DeploymentOptions()
                                     .setConfig(new JsonObject().put("msg.address", "hello.handler.failure.retry")));
 
-        vertx.deployVerticle(ReplierWithFailure.class.getName(),
+        vertx.deployVerticle(ReplierWithFailureVerticle.class.getName(),
                              new DeploymentOptions()
                                     .setConfig(new JsonObject().put("msg.address", "hello.rx.failure.retry")));
 
-        vertx.deployVerticle(ReplierWithFailure.class.getName(),
+        vertx.deployVerticle(ReplierWithFailureVerticle.class.getName(),
                 new DeploymentOptions()
                         .setConfig(new JsonObject().put("msg.address", "hello.handler.failure.circuit-breaker.retry")));
 

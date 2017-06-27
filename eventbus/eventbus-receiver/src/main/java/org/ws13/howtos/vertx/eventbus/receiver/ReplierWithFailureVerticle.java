@@ -5,7 +5,7 @@ import io.vertx.core.AbstractVerticle;
 /**
  * @author ctranxuan
  */
-public class ReplierWithFailure extends AbstractVerticle {
+public class ReplierWithFailureVerticle extends AbstractVerticle {
     private int counter = 0;
 
     @Override
