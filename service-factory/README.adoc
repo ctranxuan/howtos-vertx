@@ -1,0 +1,22 @@
+= ServiceFactory
+
+This is a simple sample that illustrates how to create a http://vertx.io/docs/vertx-service-factory/java/[Vert.x ServiceFactory].
+
+==  Run the examples with maven
+
+[source,shell]
+----
+mvn clean vertx:run
+----
+
+== Run the examples with an IDE
+
+Create a `Run` configuration for the project
+`service-factory` with
+the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- VM options:
+- Program arguments: `run org.ws13.howtos.vertx.servicefactory.HelloDeployVerticle`
+- Use of classpath module: `service-factory`
+

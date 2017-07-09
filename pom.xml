@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ws13.howtos.vertx</groupId>
     <artifactId>howtos-vertx</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
@@ -48,5 +48,6 @@
         <module>asyncs</module>
         <module>discoveries</module>
         <module>eventbus</module>
+        <module>service-factory</module>
     </modules>
 </project>
