@@ -1,0 +1,63 @@
+= EventBus
+
+This is a simple sample that illustrates how to use http://vertx.io/docs/vertx-core/java/#event_bus[Vert.x EventBus]
+with reply:
+
+* link:eventbus-rxjava-receiver[eventbus-rxjava-receiver] listens to messages. Depending on the
+  address, it can reply with a timeout for a while or a failure before replying
+  with a sucess message.
+* link:eventbus-rxjava-sender[eventbus-rxjava-sender] starts verticles that sends a "Hello"
+  message. If the reply is timeout or has a failure, attempts to retry to send
+  the message several times
+
+The sample uses a Vert.x cluster of the above described verticles.
+
+==  Run the examples with maven
+
+[source,shell]
+----
+mvn clean install
+cd eventbus-rxjava-receiver
+mvn clean vertx:run -Dvertx.runArgs="-cluster" -Dvertx.jvmArguments="-Djava.util.logging.config.file=logging.properties"
+----
+
+Open another terminal:
+
+[source,shell]
+----
+cd eventbus-rxjava-sender
+mvn clean vertx:run -Dvertx.runArgs="-cluster" -Dvertx.jvmArguments="-Djava.util.logging.config.file=logging.properties"
+----
+
+== Run the examples with an IDE
+
+=== eventbus-rxjava-receiver
+
+Create a `Run` configuration for the project
+`eventbus-receiver` with
+the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- VM options: `-Djava.util.logging.config.file=src/main/resources/logging.properties`
+- Program arguments: `run org.ws13.howtos.vertx.eventbus.receiver.rxjava.DeployVerticle -cluster`
+- Use of classpath module: `eventbus-receiver`
+
+The VM option switch off the verbosity of the Cluster library Ignite
+
+=== eventbus-sender
+
+Create a `Run` configuration for the project
+`eventbus-sender` with
+the following configuration:
+
+- Main class: `io.vertx.core.Launcher`
+- VM options: `-Djava.util.logging.config.file=src/main/resources/logging.properties`
+- Program arguments: `run org.ws13.howtos.vertx.eventbus.sender.rxjava.DeployVerticle -cluster`
+- Use of classpath module: `eventbus-sender`
+
+The VM option switch off the verbosity of the Cluster library Ignite
+
+Run the `eventbus-receiver` first since it listens to messages sent by
+the `eventbus-sender` at startup.
+
+

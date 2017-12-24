@@ -49,5 +49,6 @@
         <module>discoveries</module>
         <module>eventbus</module>
         <module>service-factory</module>
+        <module>eventbus-rxjava</module>
     </modules>
 </project>
