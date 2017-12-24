@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ws13.howtos.vertx</groupId>
     <artifactId>howtos-vertx</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
@@ -14,10 +14,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- vert.x properties -->
-        <vertx.version>3.4.2</vertx.version>
+        <vertx.version>3.5.0</vertx.version>
         
         <!-- Maven plugins -->
-        <fabric8-vertx-maven-plugin.version>1.0.7</fabric8-vertx-maven-plugin.version>
+        <fabric8-vertx-maven-plugin.version>1.0.8</fabric8-vertx-maven-plugin.version>
     </properties>
 
     <dependencyManagement>

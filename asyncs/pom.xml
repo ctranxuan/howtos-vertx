@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.ws13.howtos.vertx</groupId>
         <artifactId>howtos-vertx</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>asyncs</artifactId>
